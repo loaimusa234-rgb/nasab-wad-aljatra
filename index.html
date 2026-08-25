@@ -571,7 +571,8 @@ document.getElementById('prevStep').onclick=()=>{addStep=Math.max(1,addStep-1);r
 document.querySelectorAll('[data-step-pill]').forEach(p=>p.onclick=()=>{const n=Number(p.dataset.stepPill);if(n<addStep||n===addStep){addStep=n;renderAddStep()}});
 renderAddStep();
 
-</script></body></html>
+</script>
+
 <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -581,3 +582,7 @@ if ("serviceWorker" in navigator) {
   });
 }
 </script>
+
+</body>
+</html>
+
