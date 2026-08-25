@@ -1,0 +1,24 @@
+{
+  "name": "نسب ود الجترة",
+  "short_name": "نسب ود الجترة",
+  "description": "منصة لحفظ الأنساب والروايات والمشجرات للأجيال القادمة.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f7edd7",
+  "theme_color": "#063b27",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
