@@ -5,30 +5,396 @@
 <title>نسب ود الجترة</title>
 <style>
 :root{--g:#063b27;--g2:#0d5a3b;--gold:#d6ad52;--cream:#f8f1df;--ink:#17251e;--muted:#6d766f;--card:#fffaf0;--line:#e5d6b4;--danger:#b52e2e;--blue:#2d6fa3}
-*{box-sizing:border-box}body{margin:0;font-family:Tahoma,"Arial",sans-serif;background:linear-gradient(135deg,#eef1e7,#f8f1df);color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer}
-.app{display:flex;min-height:100vh}.side{width:255px;background:linear-gradient(180deg,#032c1d,#075334);color:#fff;padding:24px 16px;position:fixed;right:0;top:0;bottom:0;z-index:5}.brand{text-align:center;border-bottom:1px solid #ffffff24;padding-bottom:20px}.logo{width:74px;height:74px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:auto;font-size:38px;color:#f0cf7a}.brand h1{font-size:25px;margin:10px 0 4px}.brand p{font-size:12px;color:#e6d49e;margin:0}.nav{margin-top:22px}.nav button{width:100%;border:0;background:transparent;color:#fff;padding:13px 12px;border-radius:12px;text-align:right;margin:4px 0}.nav button:hover,.nav button.active{background:#d7ae55;color:#163525}.main{margin-right:255px;width:calc(100% - 255px);padding:26px}.top{background:linear-gradient(90deg,#f7edd7,#fffaf0);border:1px solid var(--line);border-radius:24px;padding:28px;position:relative;overflow:hidden}.top:after{content:"🌴  🌳  🌴";position:absolute;left:25px;top:20px;opacity:.22;font-size:55px}.top h2{font-size:38px;margin:0;color:var(--g)}.top p{color:#795f2c}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}.stat,.card{background:rgba(255,250,240,.94);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 7px 22px #173d2510}.stat b{font-size:28px;color:var(--g);display:block}.section{margin-top:20px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.section-title h3{margin:0;font-size:24px}.grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.tree{min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:auto}.node{background:#fffdf7;border:2px solid var(--gold);border-radius:14px;padding:12px 20px;min-width:150px;text-align:center;position:relative}.node.mainnode{background:var(--g);color:#fff}.children{display:flex;gap:45px;margin-top:45px;position:relative}.children:before{content:"";position:absolute;right:12%;left:12%;top:-23px;border-top:2px solid var(--gold)}.child{display:flex;flex-direction:column;align-items:center;gap:10px}.child:before{content:"";height:22px;border-right:2px solid var(--gold)}.grand{margin-top:25px}.badge{display:inline-block;padding:4px 9px;border-radius:20px;font-size:11px;background:#e8f1dd;color:#27643d}.badge.yellow{background:#fff0c7;color:#8b6715}.badge.blue{background:#dcecf9;color:#24608b}.badge.red{background:#fde1e1;color:#9d2626}.search{display:flex;gap:10px}.search input,.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fffdf8;outline:none}.search button,.primary{border:0;background:var(--g);color:#fff;border-radius:12px;padding:11px 18px}.secondary{border:1px solid var(--gold);background:#fff8e8;color:var(--g);border-radius:12px;padding:10px 15px}.person{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid #eadfca}.person:last-child{border:0}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field label{font-weight:bold;font-size:14px;display:block;margin-bottom:7px}.field.full{grid-column:1/-1}.upload{border:2px dashed var(--gold);padding:25px;text-align:center;border-radius:16px;background:#fffaf0}.actions{display:flex;gap:10px;justify-content:flex-start;margin-top:18px}.notice{background:#fff5d7;border:1px solid #ecd28a;padding:13px;border-radius:12px;margin:12px 0}.admin{display:grid;grid-template-columns:1fr 1fr;gap:18px}.review-card{border-right:4px solid var(--blue)}.review-card h4{margin-top:0}.review-actions{display:flex;gap:8px;flex-wrap:wrap}.approve{background:#1f6a40;color:white;border:0;padding:10px 14px;border-radius:10px}.reject{background:#b52e2e;color:white;border:0;padding:10px 14px;border-radius:10px}.request{background:#e8a72d;color:#fff;border:0;padding:10px 14px;border-radius:10px}.hidden{display:none!important}.footer{margin-top:25px;text-align:center;color:#7b806f;font-size:12px}
-@media(max-width:900px){.side{width:82px;padding:12px 8px}.brand h1,.brand p,.nav span{display:none}.main{margin-right:82px;width:calc(100% - 82px);padding:14px}.stats{grid-template-columns:1fr 1fr}.grid,.admin{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.top h2{font-size:28px}.children{gap:12px}.node{min-width:105px;padding:9px}}
-</style></head>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Tahoma,"Arial",sans-serif;background:linear-gradient(135deg,#eef1e7,#f8f1df);color:var(--ink)}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh}
+.side{width:310px;background:linear-gradient(180deg,#032c1d,#075334);color:#fff;padding:22px 16px;position:fixed;right:0;top:0;bottom:0;z-index:1000;transform:translateX(105%);transition:transform .32s cubic-bezier(.22,.8,.25,1);box-shadow:-18px 0 45px #0004;overflow-y:auto}
+body.menu-open .side{transform:translateX(0)}
+.menu-toggle{position:fixed;right:18px;top:18px;z-index:1100;width:54px;height:54px;border:1px solid #ffffff30;border-radius:17px;background:linear-gradient(145deg,#075334,#032c1d);color:#fff;font-size:25px;display:grid;place-items:center;box-shadow:0 9px 24px #0003;transition:.22s}
+.menu-toggle:hover{transform:scale(1.04)}
+.menu-toggle .close-icon{display:none}body.menu-open .menu-toggle .open-icon{display:none}body.menu-open .menu-toggle .close-icon{display:inline}
+.menu-overlay{position:fixed;inset:0;background:#001b1080;backdrop-filter:blur(2px);z-index:900;opacity:0;pointer-events:none;transition:opacity .25s}
+body.menu-open .menu-overlay{opacity:1;pointer-events:auto}
+.menu-label{position:fixed;right:78px;top:29px;z-index:1090;background:#fffaf0;color:var(--g);border:1px solid var(--line);border-radius:10px;padding:7px 11px;font-size:12px;box-shadow:0 5px 16px #0002}
+body.menu-open .menu-label{display:none}
+.brand{text-align:center;border-bottom:1px solid #ffffff24;padding-bottom:20px}.logo{width:74px;height:74px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:auto;font-size:38px;color:#f0cf7a}.brand h1{font-size:25px;margin:10px 0 4px}.brand p{font-size:12px;color:#e6d49e;margin:0}
+.nav{margin-top:22px}.nav button{width:100%;border:1px solid transparent;background:transparent;color:#fff;padding:12px 13px;border-radius:15px;text-align:right;margin:5px 0;display:flex;align-items:center;gap:12px;font-size:15px;transition:.2s}
+.nav button:first-letter{font-size:20px}.nav button:hover{background:#ffffff14;border-color:#ffffff20;transform:translateX(-2px)}
+.nav button.active{background:linear-gradient(90deg,#d7ae55,#e6c574);color:#163525;box-shadow:0 6px 18px #0002}
+.nav button span{flex:1}
+.main{width:100%;padding:82px 26px 26px;max-width:1500px;margin:0 auto;transition:filter .25s}
+.top{background:linear-gradient(90deg,#f7edd7,#fffaf0);border:1px solid var(--line);border-radius:24px;padding:28px;position:relative;overflow:hidden}.top:after{content:"🌴  🌳  🌴";position:absolute;left:25px;top:20px;opacity:.22;font-size:55px}.top h2{font-size:38px;margin:0;color:var(--g)}.top p{color:#795f2c}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}.stat,.card{background:rgba(255,250,240,.94);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 7px 22px #173d2510}.stat b{font-size:28px;color:var(--g);display:block}
+.section{margin-top:20px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.section-title h3{margin:0;font-size:24px}.grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+.tree{min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:auto}.node{background:#fffdf7;border:2px solid var(--gold);border-radius:14px;padding:12px 20px;min-width:150px;text-align:center;position:relative}.node.mainnode{background:var(--g);color:#fff}.children{display:flex;gap:45px;margin-top:45px;position:relative}.children:before{content:"";position:absolute;right:12%;left:12%;top:-23px;border-top:2px solid var(--gold)}.child{display:flex;flex-direction:column;align-items:center;gap:10px}.child:before{content:"";height:22px;border-right:2px solid var(--gold)}.grand{margin-top:25px}
+.badge{display:inline-block;padding:4px 9px;border-radius:20px;font-size:11px;background:#e8f1dd;color:#27643d}.badge.yellow{background:#fff0c7;color:#8b6715}.badge.blue{background:#dcecf9;color:#24608b}.badge.red{background:#fde1e1;color:#9d2626}
+.search{display:flex;gap:10px}.search input,.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fffdf8;outline:none}.search button,.primary{border:0;background:var(--g);color:#fff;border-radius:12px;padding:11px 18px}.secondary{border:1px solid var(--gold);background:#fff8e8;color:var(--g);border-radius:12px;padding:10px 15px}
+.person{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid #eadfca}.person:last-child{border:0}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field label{font-weight:bold;font-size:14px;display:block;margin-bottom:7px}.field.full{grid-column:1/-1}.upload{border:2px dashed var(--gold);padding:25px;text-align:center;border-radius:16px;background:#fffaf0}.actions{display:flex;gap:10px;justify-content:flex-start;margin-top:18px}.notice{background:#fff5d7;border:1px solid #ecd28a;padding:13px;border-radius:12px;margin:12px 0}
+.admin{display:grid;grid-template-columns:1fr 1fr;gap:18px}.review-card{border-right:4px solid var(--blue)}.review-card h4{margin-top:0}.review-actions{display:flex;gap:8px;flex-wrap:wrap}.approve{background:#1f6a40;color:white;border:0;padding:10px 14px;border-radius:10px}.reject{background:#b52e2e;color:white;border:0;padding:10px 14px;border-radius:10px}.request{background:#e8a72d;color:#fff;border:0;padding:10px 14px;border-radius:10px}.hidden{display:none!important}.footer{margin-top:25px;text-align:center;color:#7b806f;font-size:12px}
+@media(max-width:900px){.side{width:min(310px,88vw)}.main{padding:76px 14px 20px}.menu-toggle{right:12px;top:12px;width:48px;height:48px;border-radius:14px}.menu-label{right:68px;top:22px}.stats{grid-template-columns:1fr 1fr}.grid,.admin{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.top{padding:22px}.top h2{font-size:28px}.top:after{font-size:38px;left:10px}.children{gap:12px}.node{min-width:105px;padding:9px}.search{flex-direction:column}.search button{width:100%}}
+
+/* ===== Tree page: modern genealogy view ===== */
+.tree-shell{display:grid;grid-template-columns:1fr 300px;gap:16px;align-items:stretch}
+.tree-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.tree-actions{display:flex;gap:8px;flex-wrap:wrap}
+.tree-actions button{border:1px solid var(--line);background:#fffaf0;color:var(--g);border-radius:10px;padding:8px 11px}
+.tree-actions button:hover{background:#f4e5bf}
+.tree-canvas{min-height:620px;background:
+ radial-gradient(circle at 50% 20%,#fffdf8 0,#fff9ed 48%,#f3ead7 100%);
+ border:1px solid var(--line);border-radius:20px;overflow:auto;position:relative;padding:50px 25px}
+.tree-map{min-width:760px;min-height:520px;display:flex;flex-direction:column;align-items:center;transform-origin:top center;transition:transform .25s ease}
+.tree-root{display:flex;flex-direction:column;align-items:center}
+.person-node{min-width:160px;background:#fffdf7;border:1.5px solid var(--line);border-radius:16px;padding:12px 15px;text-align:center;box-shadow:0 7px 20px #3d351a12;position:relative}
+.person-node strong{display:block;font-size:16px;color:var(--ink)}.person-node small{display:block;color:var(--muted);margin-top:3px}
+.person-node.root{background:linear-gradient(145deg,#075334,#063b27);color:#fff;border-color:#d7b55d;min-width:200px}
+.person-node.root strong{color:#fff;font-size:18px}.person-node.root small{color:#e6d49e}
+.connector-v{height:30px;border-right:2px solid #d6ad52}
+.tree-level{display:flex;justify-content:center;gap:28px;position:relative;padding-top:30px}
+.tree-level:before{content:"";position:absolute;top:0;right:12%;left:12%;border-top:2px solid #d6ad52}
+.tree-branch{display:flex;flex-direction:column;align-items:center;min-width:150px;position:relative}
+.tree-branch:before{content:"";height:30px;border-right:2px solid #d6ad52}
+.tree-level.second{gap:18px}.tree-level.second:before{right:8%;left:8%}
+.tree-node-actions{display:flex;gap:5px;justify-content:center;margin-top:7px}
+.tree-node-actions button{border:0;background:#eef4ec;color:#1d5c3a;border-radius:7px;padding:3px 7px;font-size:11px}
+.tree-info{display:flex;flex-direction:column;gap:12px}
+.info-card{background:#fffaf0;border:1px solid var(--line);border-radius:16px;padding:16px}
+.info-card h4{margin:0 0 10px;color:var(--g)}
+.legend{display:grid;gap:8px}.legend div{display:flex;align-items:center;gap:8px;font-size:13px}
+.dot{width:11px;height:11px;border-radius:50%;background:#4c9a64}.dot.yellow{background:#d6ad52}.dot.blue{background:#5b98c2}.dot.red{background:#c34b4b}
+.tree-note{font-size:12px;line-height:1.7;color:var(--muted)}
+@media(max-width:900px){.tree-shell{grid-template-columns:1fr}.tree-canvas{min-height:520px;padding:40px 12px}.tree-map{min-width:700px}.tree-info{display:grid;grid-template-columns:1fr 1fr}.info-card:last-child{grid-column:1/-1}}
+
+
+.step-pill{flex:1;text-align:center;padding:9px 5px;border-radius:12px;background:#f1ecdf;color:#777;font-weight:bold;font-size:13px;border:1px solid transparent}
+.step-pill.active{background:#e6f0e4;color:var(--g);border-color:#c5d7c1}.step-pill.done{background:#d7ae55;color:#173525}
+.add-step h3{margin-top:5px}.add-step{min-height:270px}
+<style>
+.search-hero{background:linear-gradient(135deg,#f7edd7,#fffaf0);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px}
+.search-box{display:flex;gap:9px}.search-box input{flex:1;border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fffdf8;outline:none}.search-box button{border:0;border-radius:14px;padding:12px 18px;background:var(--g);color:#fff}
+.search-filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.filter-chip{border:1px solid var(--line);background:#fffaf0;color:var(--g);border-radius:20px;padding:7px 12px;font-size:12px}.filter-chip.active{background:#d7ae55;border-color:#d7ae55;color:#173525}
+.search-summary{display:flex;justify-content:space-between;align-items:center;margin:14px 0 8px;color:var(--muted);font-size:13px}.results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.result-card{background:#fffdf7;border:1px solid var(--line);border-radius:17px;padding:15px;box-shadow:0 6px 18px #173d2510}.result-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.avatar{width:46px;height:46px;border-radius:14px;background:linear-gradient(145deg,#e8f1dd,#fff1ca);display:grid;place-items:center;font-size:22px}.result-person{display:flex;align-items:center;gap:10px;flex:1}.result-person strong{display:block;color:var(--g)}.result-person small{color:var(--muted)}
+.result-meta{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px;font-size:12px}.meta-item{background:#f7f2e6;border-radius:10px;padding:8px}.result-actions{display:flex;gap:7px;margin-top:12px}.result-actions button{flex:1;border-radius:10px;padding:8px;border:1px solid var(--line);background:#fffaf0;color:var(--g)}.result-actions .primary{border:0}.no-results{text-align:center;padding:35px 15px;color:var(--muted)}
+@media(max-width:900px){.results-grid{grid-template-columns:1fr}.search-box{flex-direction:column}.search-box button{width:100%}}
+
+/* ===== Sources & documents page ===== */
+.sources-hero{background:linear-gradient(135deg,#f7edd7,#fffaf0);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px}
+.sources-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.sources-search{display:flex;gap:8px;flex:1;min-width:240px}.sources-search input{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px;background:#fffdf8}
+.sources-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.source-tab{border:1px solid var(--line);background:#fffaf0;color:var(--g);border-radius:20px;padding:7px 12px;font-size:12px}.source-tab.active{background:#d7ae55;color:#173525;border-color:#d7ae55}
+.sources-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.source-card{background:#fffdf7;border:1px solid var(--line);border-radius:17px;padding:16px;box-shadow:0 6px 18px #173d2510}
+.source-icon{width:48px;height:48px;border-radius:14px;background:#f2e7ca;display:grid;place-items:center;font-size:24px}.source-head{display:flex;gap:11px;align-items:center}.source-head h4{margin:0;color:var(--g)}.source-head small{display:block;color:var(--muted);margin-top:4px}
+.source-desc{font-size:13px;line-height:1.8;color:#59635b;margin:13px 0}.source-meta{display:flex;gap:7px;flex-wrap:wrap}.source-actions{display:flex;gap:7px;margin-top:13px}.source-actions button{flex:1;border:1px solid var(--line);background:#fffaf0;color:var(--g);border-radius:10px;padding:8px}.source-actions .primary{border:0}
+@media(max-width:900px){.sources-grid{grid-template-columns:1fr}.sources-toolbar{align-items:stretch}.sources-search{min-width:100%}}
+
+.api-status{padding:12px 14px;border-radius:12px;margin-top:12px;display:none;font-size:13px}
+.api-status.show{display:block}.api-status.success{background:#e8f1dd;color:#27643d;border:1px solid #c8ddbf}
+.api-status.error{background:#fde7e7;color:#9d2626;border:1px solid #efc2c2}
+.review-actions .loading{opacity:.65;pointer-events:none}
+
+.review-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.review-list{display:grid;gap:12px}.review-item{background:#fffdf7;border:1px solid var(--line);border-radius:17px;padding:16px}
+.review-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.review-id{font-size:12px;color:var(--muted)}
+.review-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}.review-field{background:#f7f2e6;border-radius:10px;padding:9px;font-size:12px}.review-field b{display:block;color:var(--g);margin-bottom:3px}
+.review-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.review-buttons button{border:0;border-radius:10px;padding:9px 13px}
+.review-buttons .approve{background:#1f6a40;color:#fff}.review-buttons .request{background:#e8a72d;color:#fff}.review-buttons .reject{background:#b52e2e;color:#fff}
+.review-empty{text-align:center;padding:40px 15px;color:var(--muted)}.review-loading{text-align:center;padding:25px;color:var(--muted)}
+@media(max-width:900px){.review-grid{grid-template-columns:1fr}.review-top{flex-direction:column}}
+</style></style></head>
 <body>
-<div class="app"><aside class="side"><div class="brand"><div class="logo">🌳</div><h1>نسب ود الجترة</h1><p>نوثّق نسبنا .. نحفظ تاريخ أجدادنا</p></div><div class="nav">
+<button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false" onclick="toggleMenu()"><span class="open-icon">☰</span><span class="close-icon">×</span></button>
+<div class="menu-label">القائمة الرئيسية</div>
+<div class="menu-overlay" onclick="closeMenu()"></div>
+<div class="app"><aside class="side"><div class="brand"><div class="logo">🌳</div><h1>نسب ود الجترة</h1><p>نوثّق نسبنا .. نحفظ تاريخ أجدادنا</p></div>
+<div class="nav">
 <button class="active" data-page="home">🏠 <span>الرئيسية</span></button><button data-page="tree">🌳 <span>شجرة الأنساب</span></button><button data-page="search">🔎 <span>البحث في الأنساب</span></button><button data-page="add">➕ <span>أضف نسبك</span></button><button data-page="sources">📚 <span>المصادر والمشجرات</span></button><button data-page="review">🛡️ <span>لوحة المراجعة</span></button><button data-page="profile">👤 <span>حسابي</span></button></div></aside>
 <main class="main">
-<section id="home" class="page"><div class="top"><h2>نسب ود الجترة</h2><p>منصة لحفظ الأنساب والروايات والمشجرات للأجيال القادمة.</p><button class="primary" onclick="show('tree')">استعرض شجرة النسب</button></div><div class="stats"><div class="stat"><b>64</b>مشجرة محفوظة</div><div class="stat"><b>326</b>أسرة مسجلة</div><div class="stat"><b>87</b>فرعًا</div><div class="stat"><b>1,248</b>شخصًا</div></div><div class="section grid"><div class="card"><div class="section-title"><h3>أحدث الإضافات</h3><button class="secondary" onclick="show('search')">عرض الكل</button></div><div id="latest"></div></div><div class="card"><h3>حالات التوثيق</h3><p>🟢 موثق</p><p>🟡 رواية عائلية</p><p>🔵 قيد المراجعة</p><p>🔴 مختلف عليه</p></div></div></section>
-<section id="tree" class="page hidden"><div class="section-title"><h3>🌳 شجرة النسب</h3><button class="secondary" onclick="show('add')">+ إضافة فرع</button></div><div class="card tree"><div class="node mainnode">محمد عيسى<br><small>(ود الجترة)</small><br><span class="badge">موثق</span></div><div class="children"><div class="child"><div class="node">علي<br><span class="badge">موثق</span></div><div class="grand"><div class="node">عثمان<br><span class="badge">موثق</span></div><div class="grand"><div class="node">محمد الأمين</div><div class="grand"><div class="node">موسى</div><div class="grand"><div class="node mainnode">لؤي<br><span class="badge">موثق</span></div></div></div></div></div></div><div class="child"><div class="node">عبدالله<br><span class="badge yellow">رواية عائلية</span></div></div><div class="child"><div class="node">قنديل<br><span class="badge yellow">رواية عائلية</span></div></div></div></div></section>
-<section id="search" class="page hidden"><div class="section-title"><h3>🔎 البحث في الأنساب</h3></div><div class="card"><div class="search"><input id="q" placeholder="ابحث بالاسم أو الكنية أو القرية..." oninput="doSearch()"><button class="primary" onclick="doSearch()">بحث</button></div><div id="results" style="margin-top:18px"></div></div></section>
-<section id="add" class="page hidden"><div class="section-title"><h3>➕ أضف نسبك</h3></div><div class="card"><div class="notice">🔐 صورة شخصية وإثبات هوية مطلوبان لإرسال طلب توثيق النسب. لا يظهران للعامة.</div><form id="form"><div class="formgrid"><div class="field"><label>الاسم الرباعي *</label><input required placeholder="مثال: لؤي موسى محمد الأمين"></div><div class="field"><label>رقم الجوال *</label><input required placeholder="05xxxxxxxx"></div><div class="field"><label>تاريخ الميلاد *</label><input type="date" required></div><div class="field"><label>القرية / المنطقة *</label><input required placeholder="ود الجترة"></div><div class="field full"><label>سلسلة النسب *</label><input required value="محمد عيسى ← علي ← عثمان ← محمد الأمين ← موسى ← لؤي"></div><div class="field full"><label>ملاحظات عن النسب</label><textarea rows="3" placeholder="اكتب الرواية العائلية أو أي تفاصيل إضافية"></textarea></div><div class="field"><label>صورة شخصية * </label><div class="upload">📷<br>التقاط صورة أو اختيار صورة<br><input type="file" accept="image/*" required></div></div><div class="field"><label>صورة إثبات الشخصية *</label><div class="upload">🪪<br>ارفع بطاقة الهوية / جواز السفر<br><input type="file" accept="image/*,.pdf" required></div></div><div class="field full"><label>مستندات إضافية (اختياري)</label><div class="upload">📎 مشجرة، وثيقة، أو مستند يدعم النسب<br><input type="file" multiple></div></div><div class="field full"><label><input type="checkbox" required> أوافق على مراجعة البيانات واستخدامها لغرض التحقق من النسب فقط.</label></div></div><div class="actions"><button class="primary" type="submit">إرسال الطلب للمراجعة</button><button class="secondary" type="button" onclick="show('home')">إلغاء</button></div></form></div></section>
-<section id="sources" class="page hidden"><div class="section-title"><h3>📚 المصادر والمشجرات</h3></div><div class="card"><div class="person"><span>📜 مشجرة عائلة محمد عيسى</span><span class="badge">موثقة</span></div><div class="person"><span>📖 رواية كبار الأسرة</span><span class="badge yellow">رواية عائلية</span></div><div class="person"><span>📎 وثائق داعمة</span><span class="badge blue">قيد المراجعة</span></div></div></section>
-<section id="review" class="page hidden"><div class="section-title"><h3>🛡️ لوحة المراجعة</h3><span class="badge blue">3 طلبات جديدة</span></div><div class="admin"><div class="card review-card"><h4>طلب #N-2026-0587</h4><p><b>محمد عيسى عثمان علي</b></p><p>السلسلة: محمد عيسى ← علي ← عثمان</p><p>📍 ود الجترة</p><p>📸 صورة شخصية: مرفقة</p><p>🪪 إثبات هوية: مرفق</p><div class="review-actions"><button class="approve" onclick="alert('تم قبول الطلب')">قبول</button><button class="request" onclick="alert('تم طلب معلومات إضافية')">طلب معلومات</button><button class="reject" onclick="alert('تم رفض الطلب')">رفض</button></div></div><div class="card"><h3>تعليمات المراجع</h3><ul><li>مطابقة الاسم مع إثبات الهوية.</li><li>عدم نشر وثائق الهوية للعامة.</li><li>تمييز الرواية العائلية عن النسب الموثق.</li><li>عند وجود اختلاف، سجّل الروايتين بدل حذف إحداهما.</li></ul></div></div></section>
+<section id="home" class="page"><div class="top"><h2>نسب ود الجترة</h2><p>منصة لحفظ الأنساب والروايات والمشجرات للأجيال القادمة.</p><button class="primary" onclick="show('tree');closeMenu()">استعرض شجرة النسب</button></div><div class="stats"><div class="stat"><b>1</b>جذر رئيسي</div><div class="stat"><b>0</b>فروع مضافة</div><div class="stat"><b>1</b>شخص في الجذر</div><div class="stat"><b>0</b>طلبات نسب جديدة</div></div><div class="section grid"><div class="card"><div class="section-title"><h3>أحدث الإضافات</h3><button class="secondary" onclick="show('search')">عرض الكل</button></div><div id="latest"></div></div><div class="card"><h3>حالات التوثيق</h3><p>🟢 موثق</p><p>🟡 رواية عائلية</p><p>🔵 قيد المراجعة</p><p>🔴 مختلف عليه</p></div></div></section>
+<section id="tree" class="page hidden">
+<div class="section-title">
+  <h3>🌳 شجرة الأنساب</h3>
+  <div class="tree-actions">
+    <button type="button" onclick="treeZoom(-.1)">−</button>
+    <button type="button" onclick="treeReset()">100%</button>
+    <button type="button" onclick="treeZoom(.1)">+</button>
+    <button type="button" class="secondary" onclick="show('add')">+ إضافة فرع</button>
+  </div>
+</div>
+<div class="tree-shell">
+  <div class="card" style="padding:12px">
+    <div class="tree-toolbar">
+      <div>
+        <b>الجذر الرئيسي للشجرة</b>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px">لا توجد فروع مضافة حاليًا</div>
+      </div>
+      <span class="badge">الجذر</span>
+    </div>
+    <div class="tree-canvas" id="treeCanvas">
+      <div class="tree-map" id="treeMap">
+        <div class="tree-root">
+          <div class="person-node root">
+            <strong>محمد عيسى</strong>
+            <small>(الجترة)</small>
+            <span class="badge" style="margin-top:7px;background:#e7f2df">الجذر الرئيسي</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tree-info">
+    <div class="info-card">
+      <h4>🌳 أصل الشجرة</h4>
+      <p style="margin:7px 0;font-size:18px"><b>محمد عيسى</b></p>
+      <p style="margin:7px 0;color:var(--muted)">الجترة</p>
+    </div>
+    <div class="info-card">
+      <h4>الفروع</h4>
+      <p style="margin:7px 0">لا توجد فروع مضافة حتى الآن.</p>
+      <button class="primary" type="button" onclick="show('add')">إضافة أول فرع</button>
+    </div>
+    <div class="info-card">
+      <h4>تصميم التطبيق</h4>
+      <p style="margin:7px 0">✦ تصميم وتطوير التطبيق</p>
+      <p style="margin:7px 0;font-size:18px;color:var(--g)"><b>لؤي موسى</b></p>
+    </div>
+  </div>
+</div>
+</section>
+<section id="search" class="page hidden">
+<div class="section-title"><h3>🔎 البحث في الأنساب</h3><span class="badge">بحث عام</span></div>
+<div class="search-hero"><div class="search-box"><input id="q" placeholder="اكتب اسم الشخص أو الكنية أو القرية..." oninput="doSearch()"><button type="button" onclick="doSearch()">🔎 بحث</button></div>
+<div class="search-filters"><button class="filter-chip active" onclick="setSearchFilter('all',this)">الكل</button><button class="filter-chip" onclick="setSearchFilter('موثق',this)">🟢 موثق</button><button class="filter-chip" onclick="setSearchFilter('رواية عائلية',this)">🟡 رواية عائلية</button><button class="filter-chip" onclick="setSearchFilter('قيد المراجعة',this)">🔵 قيد المراجعة</button></div></div>
+<div class="card"><div class="search-summary"><span id="searchCount"></span><span>يمكنك البحث بالاسم أو المكان</span></div><div id="results" class="results-grid"></div></div>
+</section>
+<section id="add" class="page hidden">
+<div class="section-title"><h3>➕ إضافة نسب جديد</h3><span class="badge blue" id="stepBadge">الخطوة 1 من 4</span></div>
+<div class="card">
+  <div style="display:flex;gap:6px;margin-bottom:20px">
+    <div class="step-pill active" data-step-pill="1">1<br><small>البيانات</small></div>
+    <div class="step-pill" data-step-pill="2">2<br><small>النسب</small></div>
+    <div class="step-pill" data-step-pill="3">3<br><small>الوثائق</small></div>
+    <div class="step-pill" data-step-pill="4">4<br><small>المراجعة</small></div>
+  </div>
+
+  <div class="notice">🔐 صورة شخصية وإثبات هوية مطلوبان لإرسال طلب توثيق النسب. لا يظهران للعامة.</div>
+
+  <form id="form">
+    <div class="add-step" data-step="1">
+      <h3 style="color:var(--g)">البيانات الشخصية</h3>
+      <p style="color:var(--muted)">أدخل بيانات الشخص الذي تريد تسجيل نسبه.</p>
+      <div class="formgrid">
+        <div class="field"><label>الاسم الرباعي *</label><input id="fullName" required placeholder="مثال: لؤي موسى محمد الأمين"></div>
+        <div class="field"><label>رقم الجوال *</label><input id="phone" required placeholder="05xxxxxxxx"></div>
+        <div class="field"><label>تاريخ الميلاد *</label><input id="birthDate" type="date" required></div>
+        <div class="field"><label>القرية / المنطقة *</label><input id="location" required placeholder="ود الجترة"></div>
+      </div>
+    </div>
+
+    <div class="add-step hidden" data-step="2">
+      <h3 style="color:var(--g)">سلسلة النسب</h3>
+      <p style="color:var(--muted)">اكتب النسب من الجد الأعلى المعروف إلى الشخص.</p>
+      <div class="field"><label>سلسلة النسب *</label><input id="lineage" required value="محمد عيسى ← علي ← عثمان ← محمد الأمين ← موسى ← لؤي"></div>
+      <div class="field" style="margin-top:14px"><label>ملاحظات عن النسب</label><textarea id="notes" rows="5" placeholder="اكتب الرواية العائلية أو أي تفاصيل إضافية"></textarea></div>
+      <div class="notice">💡 إذا كانت المعلومة رواية عائلية وليست موثقة بوثيقة، سيتم تمييزها بهذا الوصف أثناء المراجعة.</div>
+    </div>
+
+    <div class="add-step hidden" data-step="3">
+      <h3 style="color:var(--g)">الوثائق والتوثيق</h3>
+      <p style="color:var(--muted)">هذه الملفات تستخدم للمراجعة فقط ولا تظهر للزوار.</p>
+      <div class="formgrid">
+        <div class="field"><label>صورة شخصية *</label><div class="upload">📷<br>التقاط صورة أو اختيار صورة<br><input id="personalPhoto" type="file" accept="image/*" required></div></div>
+        <div class="field"><label>إثبات الشخصية *</label><div class="upload">🪪<br>بطاقة الهوية / جواز السفر<br><input id="identityDocument" type="file" accept="image/*,.pdf" required></div></div>
+        <div class="field full"><label>مستندات إضافية (اختياري)</label><div class="upload">📎 مشجرة، وثيقة، أو مستند يدعم النسب<br><input id="supportingDocuments" type="file" multiple></div></div>
+        <div class="field full"><label><input id="consent" type="checkbox" required> أوافق على مراجعة البيانات واستخدامها لغرض التحقق من النسب فقط.</label></div>
+      </div>
+    </div>
+
+    <div class="add-step hidden" data-step="4">
+      <h3 style="color:var(--g)">مراجعة الطلب</h3>
+      <div class="review-card card" style="border-right:4px solid var(--gold)">
+        <p><b>الاسم:</b> <span id="reviewName">—</span></p>
+        <p><b>الموقع:</b> <span id="reviewLocation">—</span></p>
+        <p><b>سلسلة النسب:</b> <span id="reviewLineage">—</span></p>
+        <p><b>الوثائق:</b> سيتم إرسال الصورة الشخصية وإثبات الهوية للمراجعة الخاصة.</p>
+      </div>
+      <div class="notice">🛡️ قبل الإرسال، تأكد أن البيانات صحيحة. بعد الإرسال يصبح الطلب «قيد المراجعة» ويُرسل إلى خادم التطبيق.</div>
+    </div>
+
+    <div class="actions">
+      <button class="secondary hidden" id="prevStep" type="button">← السابق</button>
+      <button class="primary" id="nextStep" type="button">التالي →</button>
+      <button class="primary hidden" id="submitStep" type="submit">إرسال الطلب للمراجعة</button>
+      <button class="secondary" type="button" onclick="show('home')">إلغاء</button>
+    </div>
+  </form>
+</div>
+</section>
+<section id="sources" class="page hidden">
+<div class="section-title"><h3>📚 المصادر والمشجرات</h3><span class="badge">1 سجل رئيسي</span></div>
+<div class="sources-hero">
+  <div class="sources-toolbar">
+    <div><b>مصادر النسب</b><div style="font-size:12px;color:var(--muted);margin-top:3px">المشجرات والروايات والوثائق الداعمة</div></div>
+    <div class="sources-search"><input id="sourceQ" placeholder="ابحث في المصادر..." oninput="filterSources()"></div>
+  </div>
+  <div class="sources-tabs">
+    <button class="source-tab active" onclick="setSourceFilter('all',this)">الكل</button>
+    <button class="source-tab" onclick="setSourceFilter('مشجرة',this)">🌳 مشجرات</button>
+    <button class="source-tab" onclick="setSourceFilter('رواية',this)">📖 روايات</button>
+    <button class="source-tab" onclick="setSourceFilter('وثيقة',this)">📎 وثائق</button>
+  </div>
+</div>
+<div class="sources-grid" id="sourcesGrid"></div>
+</section>
+<section id="review" class="page hidden">
+<div class="section-title"><h3>🛡️ لوحة المراجعة</h3><span class="badge blue" id="reviewCount">—</span></div>
+<div class="card">
+  <div class="review-toolbar">
+    <div><b>طلبات توثيق النسب</b><div style="font-size:12px;color:var(--muted);margin-top:3px">الطلبات القادمة من نموذج إضافة النسب</div></div>
+    <button class="secondary" type="button" onclick="loadReviewRequests()">↻ تحديث الطلبات</button>
+  </div>
+  <div id="reviewList" class="review-list"><div class="review-loading">جاري تحميل الطلبات...</div></div>
+</div>
+</section>
 <section id="profile" class="page hidden"><div class="card"><h2>👤 لؤي موسى</h2><p>النسب المسجل:</p><h3>لؤي موسى محمد الأمين عثمان علي محمد عيسى</h3><span class="badge">موثق</span><div class="notice">بيانات الهوية والصور الحساسة خاصة ولا تظهر للمستخدمين الآخرين.</div></div></section>
-<div class="footer">نسخة أولية تجريبية — نسب ود الجترة © 2026</div>
+<div class="footer">نسب ود الجترة © 2026 — تصميم وتطوير التطبيق: لؤي موسى</div>
 </main></div>
 <script>
 const pages=[...document.querySelectorAll('.page')];
-function show(id){pages.forEach(p=>p.classList.toggle('hidden',p.id!==id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'})}
-document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>show(b.dataset.page));
-const people=[{n:'لؤي موسى محمد الأمين عثمان علي محمد عيسى',loc:'ود الجترة - الحسنات',s:'موثق'},{n:'أحمد عبدالله محمد عيسى',loc:'ود الجترة - الحسنات',s:'رواية عائلية'},{n:'سالم قنديل محمد عيسى',loc:'ود الجترة - الحسنات',s:'قيد المراجعة'}];
-function render(arr){document.getElementById('results').innerHTML=arr.length?arr.map(x=>`<div class="person"><div><b>${x.n}</b><br><small>${x.loc}</small></div><span class="badge ${x.s==='رواية عائلية'?'yellow':x.s==='قيد المراجعة'?'blue':''}">${x.s}</span></div>`).join(''):'<p>لا توجد نتائج.</p>'}
-function doSearch(){let q=document.getElementById('q').value.trim();render(q?people.filter(x=>(x.n+x.loc).includes(q)):people)}
-render(people);document.getElementById('latest').innerHTML=people.map(x=>`<div class="person"><span>${x.n}</span><span class="badge">${x.s}</span></div>`).join('');
-document.getElementById('form').onsubmit=e=>{e.preventDefault();alert('تم إرسال طلبك للمراجعة. هذه نسخة تجريبية ولا ترفع الملفات إلى خادم بعد.');show('home')}
+let treeScale=1;
+function treeZoom(delta){treeScale=Math.max(.6,Math.min(1.5,treeScale+delta));const el=document.getElementById('treeMap');if(el)el.style.transform=`scale(${treeScale})`}
+function treeReset(){treeScale=1;const el=document.getElementById('treeMap');if(el)el.style.transform='scale(1)'}
+
+function show(id){pages.forEach(p=>p.classList.toggle('hidden',p.id!==id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='review')loadReviewRequests();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{show(b.dataset.page);closeMenu()});
+function toggleMenu(){document.body.classList.toggle('menu-open');document.querySelector('.menu-toggle').setAttribute('aria-expanded',document.body.classList.contains('menu-open'))}
+function closeMenu(){document.body.classList.remove('menu-open');document.querySelector('.menu-toggle').setAttribute('aria-expanded','false')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+
+const sources=[
+ {title:'سجل الجذر الرئيسي',type:'مشجرة',icon:'🌳',status:'الجذر',desc:'الجذر المعتمد حاليًا لشجرة الأنساب في التطبيق.',meta:'محمد عيسى (الجترة)'}
+];
+let sourceFilter='all';
+function renderSources(){
+ const q=(document.getElementById('sourceQ').value||'').trim().toLowerCase();
+ const arr=sources.filter(x=>(sourceFilter==='all'||x.type===sourceFilter)&&(!q||(x.title+x.desc+x.meta).toLowerCase().includes(q)));
+ document.getElementById('sourcesGrid').innerHTML=arr.length?arr.map(x=>`<div class="source-card"><div class="source-head"><div class="source-icon">${x.icon}</div><div><h4>${x.title}</h4><small>${x.type}</small></div></div><p class="source-desc">${x.desc}</p><div class="source-meta"><span class="badge ${x.status==='رواية عائلية'?'yellow':x.status==='قيد المراجعة'?'blue':''}">${x.status}</span><span class="badge">${x.meta}</span></div><div class="source-actions"><button type="button" onclick="alert('سيتم فتح المصدر عند ربط الملفات بقاعدة البيانات')">عرض المصدر</button><button type="button" class="primary" onclick="show('tree')">ربط بالشجرة</button></div></div>`).join(''):'<div class="no-results" style="grid-column:1/-1">لا توجد مصادر مطابقة.</div>';
+}
+function setSourceFilter(f,btn){sourceFilter=f;document.querySelectorAll('.source-tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');renderSources()}
+function filterSources(){renderSources()}
+renderSources();
+const people=[{n:'محمد عيسى (الجترة)',loc:'الجترة',s:'الجذر الرئيسي',branch:'الجذر',relation:'محمد عيسى (الجترة)'}];
+
+async function loadReviewRequests(){
+  const box=document.getElementById('reviewList'),count=document.getElementById('reviewCount');
+  box.innerHTML='<div class="review-loading">جاري تحميل الطلبات...</div>';
+  try{
+    const res=await fetch('/api/requests',{headers:{'Accept':'application/json'}});
+    if(!res.ok)throw new Error('تعذر تحميل الطلبات');
+    const data=await res.json();
+    const items=Array.isArray(data)?data:[];
+    count.textContent=`${items.length} طلب`;
+    if(!items.length){box.innerHTML='<div class="review-empty"><div style="font-size:38px">📭</div><p>لا توجد طلبات توثيق حتى الآن.</p></div>';return}
+    box.innerHTML=items.map(x=>`<div class="review-item">
+      <div class="review-top">
+        <div><b>${escapeHtml(x.fullName||'بدون اسم')}</b><div class="review-id">${escapeHtml(x.id||'—')} • ${formatDate(x.createdAt)}</div></div>
+        <span class="badge ${x.status==='قيد المراجعة'?'blue':x.status==='مقبول'?'':'red'}">${escapeHtml(x.status||'قيد المراجعة')}</span>
+      </div>
+      <div class="review-grid">
+        <div class="review-field"><b>الموقع</b>${escapeHtml(x.location||'—')}</div>
+        <div class="review-field"><b>الجوال</b>${escapeHtml(x.phone||'—')}</div>
+        <div class="review-field"><b>تاريخ الميلاد</b>${escapeHtml(x.birthDate||'—')}</div>
+        <div class="review-field"><b>الملفات</b>${Number(x.fileCount||0)} مرفق</div>
+        <div class="review-field" style="grid-column:1/-1"><b>سلسلة النسب</b>${escapeHtml(x.lineage||'—')}</div>
+      </div>
+      <div class="review-buttons">
+        <button class="approve" type="button" onclick="reviewAction('${encodeURIComponent(x.id||'')}','approve')">قبول</button>
+        <button class="request" type="button" onclick="reviewAction('${encodeURIComponent(x.id||'')}','request')">طلب معلومات</button>
+        <button class="reject" type="button" onclick="reviewAction('${encodeURIComponent(x.id||'')}','reject')">رفض</button>
+      </div>
+    </div>`).join('');
+  }catch(err){
+    count.textContent='—';
+    box.innerHTML=`<div class="review-empty"><div style="font-size:35px">⚠️</div><p>${escapeHtml(err.message||'حدث خطأ')}</p><small>تأكد أن التطبيق يعمل على خادم Node وليس GitHub Pages فقط.</small></div>`;
+  }
+}
+function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function formatDate(v){if(!v)return'—';try{return new Date(v).toLocaleDateString('ar-SA')}catch{return v}}
+async function reviewAction(id,action){
+  if(!id)return;
+  const labels={approve:'قبول الطلب',request:'طلب معلومات إضافية',reject:'رفض الطلب'};
+  if(!confirm(`هل تريد ${labels[action]}؟`))return;
+  try{
+    const res=await fetch(`/api/requests/${id}/${action}`,{method:'POST',headers:{'Accept':'application/json'}});
+    const result=await res.json().catch(()=>({}));
+    if(!res.ok)throw new Error(result.error||'تعذر تنفيذ الإجراء');
+    await loadReviewRequests();
+  }catch(err){alert(err.message||'حدث خطأ')}
+}
+document.getElementById('form').onsubmit=async e=>{
+  e.preventDefault();
+  if(!validateAddStep())return;
+  const form=e.currentTarget;
+  const status=document.getElementById('apiStatus');
+  const submit=document.getElementById('submitStep');
+  status.className='api-status show';
+  status.textContent='جاري إرسال الطلب...';
+  submit.classList.add('loading');submit.disabled=true;
+  try{
+    const data=new FormData();
+    data.append('fullName',document.getElementById('fullName').value.trim());
+    data.append('phone',document.getElementById('phone').value.trim());
+    data.append('birthDate',document.getElementById('birthDate').value);
+    data.append('location',document.getElementById('location').value.trim());
+    data.append('lineage',document.getElementById('lineage').value.trim());
+    data.append('notes',document.getElementById('notes').value.trim());
+    const personal=document.getElementById('personalPhoto').files[0];
+    const identity=document.getElementById('identityDocument').files[0];
+    if(personal)data.append('personalPhoto',personal);
+    if(identity)data.append('identityDocument',identity);
+    [...document.getElementById('supportingDocuments').files].forEach(f=>data.append('supportingDocuments',f));
+    const response=await fetch('/api/requests',{method:'POST',body:data});
+    const result=await response.json().catch(()=>({}));
+    if(!response.ok)throw new Error(result.error||'تعذر إرسال الطلب');
+    status.className='api-status show success';
+    status.textContent=`تم إرسال الطلب بنجاح. رقم الطلب: ${result.id||'—'}`;
+    form.reset();
+    addStep=1;renderAddStep();
+    setTimeout(()=>show('home'),1400);
+  }catch(err){
+    status.className='api-status show error';
+    status.textContent=err.message||'حدث خطأ أثناء الإرسال';
+  }finally{
+    submit.classList.remove('loading');submit.disabled=false;
+  }
+}
+
+const addSteps=[...document.querySelectorAll('.add-step')];
+let addStep=1;
+function renderAddStep(){
+  addSteps.forEach(s=>s.classList.toggle('hidden',Number(s.dataset.step)!==addStep));
+  document.querySelectorAll('[data-step-pill]').forEach(p=>{
+    const n=Number(p.dataset.stepPill);
+    p.classList.toggle('active',n===addStep);
+    p.classList.toggle('done',n<addStep);
+  });
+  document.getElementById('stepBadge').textContent=`الخطوة ${addStep} من 4`;
+  document.getElementById('prevStep').classList.toggle('hidden',addStep===1);
+  document.getElementById('nextStep').classList.toggle('hidden',addStep===4);
+  document.getElementById('submitStep').classList.toggle('hidden',addStep!==4);
+  if(addStep===4){
+    document.getElementById('reviewName').textContent=document.getElementById('fullName').value||'—';
+    document.getElementById('reviewLocation').textContent=document.getElementById('location').value||'—';
+    document.getElementById('reviewLineage').textContent=document.getElementById('lineage').value||'—';
+  }
+}
+function validateAddStep(){
+  const fields=addSteps[addStep-1].querySelectorAll('input[required],textarea[required]');
+  for(const f of fields){if(!f.checkValidity()){f.reportValidity();return false}}
+  return true;
+}
+document.getElementById('nextStep').onclick=()=>{if(validateAddStep()){addStep=Math.min(4,addStep+1);renderAddStep()}};
+document.getElementById('prevStep').onclick=()=>{addStep=Math.max(1,addStep-1);renderAddStep()};
+document.querySelectorAll('[data-step-pill]').forEach(p=>p.onclick=()=>{const n=Number(p.dataset.stepPill);if(n<addStep||n===addStep){addStep=n;renderAddStep()}});
+renderAddStep();
+
 </script></body></html>

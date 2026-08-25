@@ -63,5 +63,35 @@ app.post('/api/requests', upload.fields([
   res.status(201).json({ id: item.id, status: item.status });
 });
 
+// Review actions: change the status of an existing request.
+function updateRequestStatus(id, status) {
+  const requests = readRequests();
+  const index = requests.findIndex(x => x.id === id);
+  if (index === -1) return null;
+  requests[index].status = status;
+  requests[index].updatedAt = new Date().toISOString();
+  writeRequests(requests);
+  const { files, ...safe } = requests[index];
+  return { ...safe, fileCount: files?.length || 0 };
+}
+
+app.post('/api/requests/:id/approve', (req, res) => {
+  const item = updateRequestStatus(req.params.id, 'مقبول');
+  if (!item) return res.status(404).json({ error: 'الطلب غير موجود' });
+  res.json(item);
+});
+
+app.post('/api/requests/:id/reject', (req, res) => {
+  const item = updateRequestStatus(req.params.id, 'مرفوض');
+  if (!item) return res.status(404).json({ error: 'الطلب غير موجود' });
+  res.json(item);
+});
+
+app.post('/api/requests/:id/request', (req, res) => {
+  const item = updateRequestStatus(req.params.id, 'مطلوب معلومات إضافية');
+  if (!item) return res.status(404).json({ error: 'الطلب غير موجود' });
+  res.json(item);
+});
+
 app.use((_req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 app.listen(PORT, '0.0.0.0', () => console.log(`Nasab Wad Aljatra listening on ${PORT}`));
