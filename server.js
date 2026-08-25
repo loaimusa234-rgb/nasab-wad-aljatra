@@ -14,7 +14,7 @@ if (!fs.existsSync(DB_FILE)) fs.writeFileSync(DB_FILE, '[]');
 
 app.use(express.json({ limit: '2mb' }));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 
 const storage = multer.diskStorage({
   destination: (_req, _file, cb) => cb(null, PRIVATE_DIR),
