@@ -196,6 +196,84 @@ body.menu-open .menu-label{display:none}
     padding-bottom:100px;
   }
 }
+ /* ===== تحسين القائمة السفلية ===== */
+
+.side{
+    height:74px;
+    padding:6px 8px;
+    background:rgba(6,59,39,.96);
+    border-top:2px solid var(--gold);
+    border-radius:22px 22px 0 0;
+    box-shadow:0 -6px 25px rgba(0,0,0,.18);
+}
+
+.nav{
+    gap:3px;
+    justify-content:space-around;
+}
+
+.nav button{
+    flex:1;
+    min-width:0;
+    height:58px;
+    border-radius:17px;
+    background:transparent;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:3px;
+    font-size:21px;
+    transition:all .2s ease;
+}
+
+.nav button span{
+    display:block;
+    flex:0;
+    font-size:10px;
+    line-height:1.2;
+    white-space:nowrap;
+    opacity:.9;
+}
+
+.nav button.active{
+    background:linear-gradient(135deg,#d6ad52,#f0cf78);
+    color:#063b27;
+    box-shadow:0 3px 10px rgba(214,173,82,.30);
+    transform:translateY(-2px);
+}
+
+.nav button.active span{
+    font-weight:700;
+    opacity:1;
+}
+
+.nav button:active{
+    transform:scale(.94);
+}
+
+@media(max-width:500px){
+    .side{
+        height:72px;
+        padding:5px 6px;
+        border-radius:20px 20px 0 0;
+    }
+
+    .nav{
+        gap:2px;
+    }
+
+    .nav button{
+        height:58px;
+        border-radius:15px;
+        font-size:20px;
+    }
+
+    .nav button span{
+        font-size:9px;
+    }
+}
 </style></head>
 <body>
 <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false" onclick="toggleMenu()"><span class="open-icon">☰</span><span class="close-icon">×</span></button>
