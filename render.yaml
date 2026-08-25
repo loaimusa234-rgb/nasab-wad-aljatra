@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: nasab-wad-aljatra
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PRIVATE_DOCS_DIR
+        value: /var/data/private_documents
+      - key: SESSION_DAYS
+        value: "30"
+      - key: OTP_TTL_MINUTES
+        value: "10"
+    disk:
+      name: nasab-data
+      mountPath: /var/data
+      sizeGB: 10
