@@ -100,7 +100,103 @@ body.menu-open .menu-label{display:none}
 .review-buttons .approve{background:#1f6a40;color:#fff}.review-buttons .request{background:#e8a72d;color:#fff}.review-buttons .reject{background:#b52e2e;color:#fff}
 .review-empty{text-align:center;padding:40px 15px;color:var(--muted)}.review-loading{text-align:center;padding:25px;color:var(--muted)}
 @media(max-width:900px){.review-grid{grid-template-columns:1fr}.review-top{flex-direction:column}}
-</style></style></head>
+</style>
+
+<style>
+/* ===== القائمة الجديدة ===== */
+
+.side{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  top:auto;
+  width:100%;
+  height:78px;
+  z-index:1000;
+  background:rgba(6,59,39,.97);
+  border-top:2px solid var(--gold);
+  border-right:0;
+  border-radius:22px 22px 0 0;
+  padding:8px 10px;
+  transform:translateY(0);
+  box-shadow:0 -8px 25px rgba(0,0,0,.18);
+}
+
+.brand{
+  display:none;
+}
+
+.nav{
+  margin:0;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  gap:6px;
+}
+
+.nav button{
+  flex:1;
+  height:60px;
+  border:0;
+  border-radius:16px;
+  background:transparent;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+  font-size:12px;
+  cursor:pointer;
+}
+
+.nav button:first-letter{
+  font-size:24px;
+}
+
+.nav button.active{
+  background:linear-gradient(135deg,#d6ad52,#e7c879);
+  color:#063b27;
+  box-shadow:0 4px 12px rgba(214,173,82,.25);
+}
+
+.nav button span{
+  flex:0;
+  font-size:12px;
+}
+
+.menu-toggle,
+.menu-label,
+.menu-overlay{
+  display:none !important;
+}
+
+.main{
+  padding-bottom:105px;
+}
+
+@media(max-width:900px){
+  .side{
+    width:100%;
+    height:76px;
+  }
+
+  .nav button{
+    min-width:0;
+    padding:4px 2px;
+  }
+
+  .nav button span{
+    font-size:11px;
+  }
+
+  .main{
+    padding-bottom:100px;
+  }
+}
+</style></head>
 <body>
 <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false" onclick="toggleMenu()"><span class="open-icon">☰</span><span class="close-icon">×</span></button>
 <div class="menu-label">القائمة الرئيسية</div>
